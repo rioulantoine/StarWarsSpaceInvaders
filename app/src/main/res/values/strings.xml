@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Star Wars SI</string>
+    <string name="title_activity_rules">RulesActivity</string>
 </resources>

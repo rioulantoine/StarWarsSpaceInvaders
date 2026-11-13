@@ -1,7 +1,5 @@
 package com.example.starwars_spaceinvaders
 
-
-
 import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
@@ -11,7 +9,6 @@ import android.hardware.SensorManager
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 
-
 class CapteurManager (pContext: InfiniteGameActivity) : SensorEventListener {
 
     //Variables
@@ -19,8 +16,7 @@ class CapteurManager (pContext: InfiniteGameActivity) : SensorEventListener {
     private val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     private val lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
     private val accelerometre = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-    val largeurEcran: Int = context.resources.displayMetrics.widthPixels
-    val hauteurEcran: Int = context.resources.displayMetrics.heightPixels
+
 
     init {
         start()
@@ -44,13 +40,6 @@ class CapteurManager (pContext: InfiniteGameActivity) : SensorEventListener {
         dialog.show()
     }
 
-    fun afficheCapteur() {
-        val deviceSensors: List<Sensor> = sensorManager.getSensorList(Sensor.TYPE_ALL)
-        for (s in deviceSensors) {
-            Log.e("Antoine", s.stringType)
-        }
-    }
-
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
 
     }
@@ -67,7 +56,6 @@ class CapteurManager (pContext: InfiniteGameActivity) : SensorEventListener {
             } else {
                 context.vObscurite.animate().alpha(1f).setDuration(500).start()
                 context.ivHalo.animate().alpha(0f).setDuration(500).start()
-
             }
         }
 
@@ -76,32 +64,28 @@ class CapteurManager (pContext: InfiniteGameActivity) : SensorEventListener {
             val sensorX = event.values[0]
             val sensorY = event.values[1]
 
-            var newX = context.ivVaisseau.x - (sensorX * 3)
-            var newY = context.ivVaisseau.y + (sensorY * 3)
+            // MODIFIÉ ICI : On vérifie que le jeu n'est pas fini et on utilise la classe Vaisseau
+            if (!context.isGameOver) {
+                // On délègue le déplacement au vaisseau
+                context.joueur.bouger(sensorX, sensorY)
 
-            val maxX = largeurEcran - context.ivVaisseau.width.toFloat()
-            val maxY = hauteurEcran - context.ivVaisseau.height.toFloat()
+                // On récupère le centre via les utilitaires de ton Vaisseau
+                val centreVaisseauX = context.joueur.getCenterX()
+                val centreVaisseauY = context.joueur.getCenterY()
 
-            // On déplace le vaisseau
-            context.ivVaisseau.x = newX.coerceIn(0f, maxX)
-            context.ivVaisseau.y = newY.coerceIn(0f, maxY)
+                // Change ces valeurs (en pixels) pour décaler le halo
+                val monDecalageX = -15
+                val monDecalageY = -280 // |-| --> vers le haut | |+| --> vers le bas
 
-            val centreVaisseauX = context.ivVaisseau.x + (context.ivVaisseau.width / 2)
-            val centreVaisseauY = context.ivVaisseau.y + (context.ivVaisseau.height / 2)
-
-            // Change ces valeurs (en pixels) pour décaler le halo
-            val monDecalageX = -15
-            val monDecalageY = -280 // |-| --> vers le haut | |+| --> vers le bas
-
-            context.ivHalo.x = centreVaisseauX - (context.ivHalo.width / 2) + monDecalageX
-            context.ivHalo.y = centreVaisseauY - (context.ivHalo.height / 2) + monDecalageY
+                context.ivHalo.x = centreVaisseauX - (context.ivHalo.width / 2) + monDecalageX
+                context.ivHalo.y = centreVaisseauY - (context.ivHalo.height / 2) + monDecalageY
+            }
         }
     }
 
     fun start() {
         sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL)
         sensorManager.registerListener(this, accelerometre, SensorManager.SENSOR_DELAY_GAME)
-
     }
 
     fun stop() {

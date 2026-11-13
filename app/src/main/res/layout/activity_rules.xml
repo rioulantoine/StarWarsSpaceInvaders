@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RulesActivity">
+
+    <TextView
+        android:id="@+id/tvRulesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-black"
+        android:text="REGLES DU JEU"
+        android:textColor="#FFD700"
+        android:textSize="28sp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        android:background="#CC000000"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRulesTitle"
+        app:layout_constraintBottom_toTopOf="@+id/btnBack">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/RulesHeader"
+                android:text="1. OBJECTIF" />
+
+            <TextView
+                style="@style/RulesText"
+                android:text="Survivez le plus longtemps possible dans l'espace infini. Votre vaisseau accélère et les dangers se multiplient avec le temps." />
+
+            <TextView
+                style="@style/RulesHeader"
+                android:text="2. PILOTAGE" />
+
+            <TextView
+                style="@style/RulesText"
+                android:text="Inclinez votre téléphone pour déplacer le X-Wing. La sensibilité est calibrée pour des manœuvres rapides." />
+
+            <TextView
+                style="@style/RulesHeader"
+                android:text="3. LE HALO DE LUMIÈRE"
+                android:textColor="#00FFFF" />
+
+            <TextView
+                style="@style/RulesText"
+                android:text="Votre vaisseau réagit à la lumière réelle !\n\n- Si vous êtes dans une pièce éclairée (> 130 lux), un HALO protecteur s'active.\n- Ce Halo détruit les vaisseaux ennemis au contact.\n- ATTENTION : Le Halo ne protège pas des astéroïdes." />
+
+            <TextView
+                style="@style/RulesHeader"
+                android:text="4. ALERTE EMPIRE"
+                android:textColor="#FF4444" />
+
+            <TextView
+                style="@style/RulesText"
+                android:text="Parfois, l'Empire scanne le secteur (Zone Rouge).\n\nL'Empire repère les sources d'énergie. Vous devez faire en sorte qu'il n'y ai plus de lumière pour désactiver votre Halo et passer inaperçu.\n\nSi le Halo est actif dans la zone rouge : DOMMAGES IMMÉDIATS." />
+
+            <TextView
+                style="@style/RulesHeader"
+                android:text="5. MENACES" />
+
+            <TextView
+                style="@style/RulesText"
+                android:text="- ENNEMIS (Vaisseaux) : Destructibles avec le Halo ou à éviter.\n- OVNI (Astéroïdes) : Indestructibles, esquive obligatoire " />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="214dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/homebtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

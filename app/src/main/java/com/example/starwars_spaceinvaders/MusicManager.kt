@@ -18,6 +18,7 @@ class MusicManager private constructor(context: Context) {
         }
         // Chargement de tes sons
         mapDeSon["son1"] = soundPool.load(context, R.raw.maintheme, 1)
+        mapDeSon["degat"] = soundPool.load(context, R.raw.sondegat, 1)
     }
 
     /*
@@ -56,4 +57,8 @@ class MusicManager private constructor(context: Context) {
         soundPool.release()
         INSTANCE = null
     }
+    fun jouerSonDegat() {
+        mapDeSon["degat"]?.let { soundId ->
+            soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
+        }    }
 }

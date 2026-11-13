@@ -9,32 +9,65 @@
 
     <View
         android:id="@+id/vObscurite"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FF000000"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:alpha="0"
-        android:translationZ="1dp" />
+        android:background="#FF000000"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivHalo"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="355dp"
         android:alpha="0"
         android:src="@drawable/halo"
         android:translationZ="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="236dp" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPause"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/ivVaisseau"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="760dp"
         android:src="@drawable/xwing"
         android:translationZ="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vObscurite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/vZoneRougeRect"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="86dp"
+        android:background="#66FF0000"
+        android:translationZ="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/ivHalo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/vZoneRougeCercle"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginEnd="44dp"
+        android:background="@drawable/cercle_rouge"
+        android:translationZ="1dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivPause"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +100,7 @@
         android:layout_width="64dp"
         android:layout_height="61dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="76dp"
         android:translationZ="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -78,7 +111,7 @@
         android:layout_width="64dp"
         android:layout_height="61dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="136dp"
         android:translationZ="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -95,16 +128,18 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="AlertInfo - Bienvenue"
-        android:textSize="12sp"
-        android:translationZ="2dp"
+    <ImageView
+        android:id="@+id/ivPause"
+        android:layout_width="46dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="174dp"
+        android:translationZ="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHalo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="77dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toEndOf="@+id/vZoneRougeCercle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pause" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

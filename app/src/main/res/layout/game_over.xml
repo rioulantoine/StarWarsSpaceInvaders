@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/linear_arrondi" android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GAME OVER"
+        android:textAlignment="center"
+        android:textColor="#FFC107"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvScoreActuel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Votre temps : 00:00"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TOP 3 SURVIE"
+        android:textAlignment="center"
+        android:textColor="#FFD700"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTop1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1. --:--"
+        android:textAlignment="center"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvTop2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2. --:--"
+        android:textAlignment="center"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvTop3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3. --:--"
+        android:textAlignment="center"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:id="@+id/btnRejouer"
+        android:layout_width="261dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="76dp"
+        app:srcCompat="@drawable/rejouerbtn" />
+
+    <ImageView
+        android:id="@+id/btnMenu"
+        android:layout_width="260dp"
+        android:layout_height="87dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/homebtn" />
+
+</LinearLayout>
